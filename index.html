@@ -1,717 +1,930 @@
 <!DOCTYPE html>
-<html lang="en">
+<html data-theme="dark">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>GarayTech — Trading & IT Consultancy</title>
-  <meta name="description" content="GarayTech operates in international trade and IT consultancy, specialising in legacy systems modernisation." />
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%230d0d0d'/%3E%3Ctext x='3' y='24' font-family='Courier New, monospace' font-size='18' font-weight='500' fill='%23b8d4b0'%3EG%3C/text%3E%3Ctext x='16' y='24' font-family='Courier New, monospace' font-size='18' font-weight='500' fill='%23a8b8d4'%3ET%3C/text%3E%3C/svg%3E" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@400;500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
-  <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-    :root {
-      --bg: #0f1623;
-      --bg2: #161e2e;
-      --bg3: #1d2538;
-      --border: rgba(200,215,240,0.08);
-      --border-hover: rgba(200,215,240,0.18);
-      --text: #dde4f0;
-      --text-muted: #6a7a96;
-      --text-dim: #3a4a62;
-      --accent-trade: #b8d4b0;
-      --accent-it: #a8b8d4;
-      --accent-trade-dim: rgba(184,212,176,0.09);
-      --accent-it-dim: rgba(168,184,212,0.09);
-      --serif: 'DM Serif Display', Georgia, serif;
-      --sans: 'DM Sans', system-ui, sans-serif;
-      --mono: 'DM Mono', monospace;
-    }
-
-    html { scroll-behavior: smooth; }
-
-    body {
-      background: var(--bg);
-      color: var(--text);
-      font-family: var(--sans);
-      font-size: 16px;
-      line-height: 1.7;
-      -webkit-font-smoothing: antialiased;
-    }
-
-    /* ── NAV ── */
-    nav {
-      position: fixed;
-      top: 0; left: 0; right: 0;
-      z-index: 100;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 1.25rem 2.5rem;
-      border-bottom: 1px solid var(--border);
-      background: rgba(13,13,13,0.85);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-    }
-
-    .nav-logo {
-      font-family: var(--mono);
-      font-size: 0.9rem;
-      font-weight: 500;
-      letter-spacing: 0.06em;
-      color: var(--text);
-      text-decoration: none;
-    }
-
-    .nav-logo span { color: var(--text-muted); }
-
-    .nav-links {
-      display: flex;
-      gap: 2rem;
-      list-style: none;
-    }
-
-    .nav-links a {
-      font-size: 0.8rem;
-      font-weight: 400;
-      letter-spacing: 0.06em;
-      color: var(--text-muted);
-      text-decoration: none;
-      text-transform: uppercase;
-      transition: color 0.2s;
-    }
-
-    .nav-links a:hover { color: var(--text); }
-
-    /* ── SECTIONS ── */
-    section { padding: 6rem 2.5rem; max-width: 1100px; margin: 0 auto; }
-
-    /* ── HERO ── */
-    #hero {
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      padding-top: 8rem;
-      padding-bottom: 4rem;
-      max-width: 1100px;
-      margin: 0 auto;
-      padding-left: 2.5rem;
-      padding-right: 2.5rem;
-      border-bottom: 1px solid var(--border);
-    }
-
-    .hero-label {
-      font-family: var(--mono);
-      font-size: 0.75rem;
-      letter-spacing: 0.12em;
-      color: var(--text-dim);
-      text-transform: uppercase;
-      margin-bottom: 2rem;
-    }
-
-    .hero-headline {
-      font-family: var(--serif);
-      font-size: clamp(2.8rem, 6vw, 5rem);
-      font-weight: 400;
-      line-height: 1.12;
-      color: var(--text);
-      margin-bottom: 2rem;
-      max-width: 820px;
-    }
-
-    .hero-headline em {
-      font-style: italic;
-      color: var(--text-muted);
-    }
-
-    .hero-sub {
-      font-size: 1rem;
-      font-weight: 300;
-      color: var(--text-muted);
-      max-width: 500px;
-      line-height: 1.75;
-      margin-bottom: 3rem;
-    }
-
-    .hero-pills {
-      display: flex;
-      gap: 0.75rem;
-      flex-wrap: wrap;
-    }
-
-    .pill {
-      font-family: var(--mono);
-      font-size: 0.72rem;
-      letter-spacing: 0.08em;
-      padding: 0.35rem 0.9rem;
-      border-radius: 2px;
-      text-transform: uppercase;
-    }
-
-    .pill-trade {
-      border: 1px solid rgba(184,212,176,0.3);
-      color: var(--accent-trade);
-      background: var(--accent-trade-dim);
-    }
-
-    .pill-it {
-      border: 1px solid rgba(168,184,212,0.3);
-      color: var(--accent-it);
-      background: var(--accent-it-dim);
-    }
-
-    /* ── SERVICES ── */
-    #services { border-bottom: 1px solid var(--border); }
-
-    .section-header {
-      display: flex;
-      align-items: baseline;
-      gap: 1.5rem;
-      margin-bottom: 3.5rem;
-    }
-
-    .section-label-inline {
-      font-family: var(--mono);
-      font-size: 0.72rem;
-      letter-spacing: 0.1em;
-      color: var(--text-dim);
-      text-transform: uppercase;
-    }
-
-    .section-title {
-      font-family: var(--serif);
-      font-size: clamp(1.6rem, 3vw, 2.4rem);
-      font-weight: 400;
-      color: var(--text);
-    }
-
-    .services-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 1.5px;
-      background: var(--border);
-      border: 1px solid var(--border);
-    }
-
-    .service-card {
-      background: var(--bg);
-      padding: 2.5rem;
-      transition: background 0.3s;
-    }
-
-    .service-card:hover { background: var(--bg2); }
-
-    .service-accent {
-      width: 28px;
-      height: 2px;
-      margin-bottom: 1.5rem;
-    }
-
-    .service-card-title {
-      font-family: var(--serif);
-      font-size: 1.6rem;
-      font-weight: 400;
-      margin-bottom: 1rem;
-    }
-
-    .service-card-body {
-      font-size: 0.9rem;
-      font-weight: 300;
-      color: var(--text-muted);
-      line-height: 1.8;
-      margin-bottom: 1.75rem;
-    }
-
-    .service-tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.5rem;
-    }
-
-    .tag {
-      font-family: var(--mono);
-      font-size: 0.68rem;
-      letter-spacing: 0.06em;
-      padding: 0.25rem 0.7rem;
-      border-radius: 2px;
-    }
-
-    .tag-trade {
-      color: var(--accent-trade);
-      border: 1px solid rgba(184,212,176,0.2);
-    }
-
-    .tag-it {
-      color: var(--accent-it);
-      border: 1px solid rgba(168,184,212,0.2);
-    }
-
-    /* ── ABOUT ── */
-    #about {
-      border-bottom: 1px solid var(--border);
-      display: grid;
-      grid-template-columns: 1fr 2fr;
-      gap: 4rem;
-      align-items: start;
-    }
-
-    .about-left .section-label-inline { display: block; margin-bottom: 0.75rem; }
-    .about-left .section-title { display: block; }
-
-    .about-body {
-      font-size: 0.95rem;
-      font-weight: 300;
-      color: var(--text-muted);
-      line-height: 1.85;
-    }
-
-    .about-body p + p { margin-top: 1.25rem; }
-
-    .about-body strong {
-      color: var(--text);
-      font-weight: 500;
-    }
-
-    /* ── CONTACT ── */
-    #contact { border-bottom: 1px solid var(--border); }
-
-    .contact-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 3rem;
-      align-items: start;
-      margin-top: 3rem;
-    }
-
-    .contact-intro {
-      font-size: 0.9rem;
-      font-weight: 300;
-      color: var(--text-muted);
-      line-height: 1.8;
-    }
-
-    .contact-form { display: flex; flex-direction: column; gap: 1rem; }
-
-    .form-group { display: flex; flex-direction: column; gap: 0.4rem; }
-
-    .form-label {
-      font-family: var(--mono);
-      font-size: 0.68rem;
-      letter-spacing: 0.1em;
-      color: var(--text-dim);
-      text-transform: uppercase;
-    }
-
-    .form-input, .form-textarea {
-      background: var(--bg2);
-      border: 1px solid var(--border);
-      border-radius: 2px;
-      color: var(--text);
-      font-family: var(--sans);
-      font-size: 0.88rem;
-      font-weight: 300;
-      padding: 0.65rem 0.9rem;
-      outline: none;
-      transition: border-color 0.2s;
-      width: 100%;
-    }
-
-    .form-input:focus, .form-textarea:focus {
-      border-color: var(--border-hover);
-    }
-
-    .form-textarea { resize: vertical; min-height: 100px; }
-
-    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
-
-    .contact-select {
-      background: var(--bg2);
-      border: 1px solid var(--border);
-      border-radius: 2px;
-      color: var(--text);
-      font-family: var(--sans);
-      font-size: 0.88rem;
-      font-weight: 300;
-      padding: 0.65rem 0.9rem;
-      outline: none;
-      transition: border-color 0.2s;
-      width: 100%;
-      appearance: none;
-      cursor: pointer;
-    }
-
-    .contact-select option { background: var(--bg2); }
-
-    .btn-submit {
-      font-family: var(--mono);
-      font-size: 0.75rem;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--bg);
-      background: var(--text);
-      border: none;
-      border-radius: 2px;
-      padding: 0.75rem 1.5rem;
-      cursor: pointer;
-      align-self: flex-start;
-      transition: opacity 0.2s, transform 0.15s;
-    }
-
-    .btn-submit:hover { opacity: 0.85; }
-    .btn-submit:active { transform: scale(0.98); }
-
-    .form-success {
-      display: none;
-      background: var(--accent-trade-dim);
-      border: 1px solid rgba(184,212,176,0.2);
-      border-radius: 2px;
-      padding: 1rem 1.25rem;
-      font-size: 0.85rem;
-      font-weight: 300;
-      color: var(--accent-trade);
-    }
-
-    .contact-links {
-      margin-top: 2rem;
-      display: flex;
-      flex-direction: column;
-      gap: 0.75rem;
-    }
-
-    .contact-link-row {
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
-    }
-
-    .contact-link-label {
-      font-family: var(--mono);
-      font-size: 0.68rem;
-      letter-spacing: 0.08em;
-      color: var(--text-dim);
-      text-transform: uppercase;
-      min-width: 60px;
-    }
-
-    .contact-link-val {
-      font-size: 0.85rem;
-      font-weight: 300;
-      color: var(--text-muted);
-      text-decoration: none;
-      transition: color 0.2s;
-    }
-
-    .contact-link-val:hover { color: var(--text); }
-
-    /* ── PRAGUE BAND ── */
-    .prague-band {
-      width: 100%;
-      height: 300px;
-      position: relative;
-      overflow: hidden;
-      border-top: 1px solid var(--border);
-      border-bottom: 1px solid var(--border);
-    }
-
-    .prague-band img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: center 60%;
-      display: block;
-      filter: grayscale(40%) brightness(0.55);
-      transition: filter 0.6s ease;
-    }
-
-    .prague-band:hover img {
-      filter: grayscale(20%) brightness(0.65);
-    }
-
-    .prague-band-overlay {
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(to bottom, rgba(13,13,13,0.55) 0%, rgba(13,13,13,0.2) 50%, rgba(13,13,13,0.65) 100%);
-      pointer-events: none;
-    }
-
-    .prague-caption {
-      position: absolute;
-      bottom: 1.25rem;
-      right: 1.5rem;
-      font-family: var(--mono);
-      font-size: 0.65rem;
-      letter-spacing: 0.1em;
-      color: rgba(255,255,255,0.3);
-      text-transform: uppercase;
-    }
-
-    /* ── FOOTER ── */
-    footer {
-      padding: 1.75rem 2.5rem;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      border-top: 1px solid var(--border);
-    }
-
-    .footer-copy {
-      font-family: var(--mono);
-      font-size: 0.7rem;
-      letter-spacing: 0.06em;
-      color: var(--text-dim);
-    }
-
-    .footer-reg {
-      font-family: var(--mono);
-      font-size: 0.7rem;
-      color: var(--text-dim);
-      text-align: right;
-    }
-
-    /* ── ANIMATIONS ── */
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(18px); }
-      to   { opacity: 1; transform: translateY(0); }
-    }
-
-    .fade-in { opacity: 0; animation: fadeUp 0.7s ease forwards; }
-    .delay-1 { animation-delay: 0.1s; }
-    .delay-2 { animation-delay: 0.22s; }
-    .delay-3 { animation-delay: 0.36s; }
-    .delay-4 { animation-delay: 0.5s; }
-
-    /* ── RESPONSIVE ── */
-    @media (max-width: 760px) {
-      nav { padding: 1rem 1.25rem; }
-      .nav-links { gap: 1.25rem; }
-      section { padding: 4rem 1.25rem; }
-      #hero { padding-left: 1.25rem; padding-right: 1.25rem; }
-      .hero-headline { font-size: 2.4rem; }
-      .services-grid { grid-template-columns: 1fr; }
-      #about { grid-template-columns: 1fr; gap: 2rem; }
-      .contact-grid { grid-template-columns: 1fr; gap: 2rem; }
-      .form-row { grid-template-columns: 1fr; }
-      footer { flex-direction: column; gap: 0.5rem; text-align: center; }
-      .footer-reg { text-align: center; }
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Decided ✓</title>
+<meta name='impact-site-verification' value='5f701c25-98ad-4aa2-9c3d-05abe767414a'>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%2300E676'/><text x='50%25' y='54%25' dominant-baseline='middle' text-anchor='middle' font-size='20' font-weight='900' fill='%230A0A0A'>✓</text></svg>">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg:      #0A0A0A;
+    --bg2:     #111111;
+    --bg3:     #141414;
+    --border:  #1e1e1e;
+    --border2: #222222;
+    --text:    #F0F0F0;
+    --text2:   #888888;
+    --text3:   #444444;
+    --text4:   #2e2e2e;
+    --accent:  #00E676;
+    --shadow:  rgba(0,0,0,0.5);
+  }
+  [data-theme="light"] {
+    --bg:      #F4F4EF;
+    --bg2:     #FFFFFF;
+    --bg3:     #ECECЕ7;
+    --border:  #E2E2DA;
+    --border2: #D0D0C8;
+    --text:    #111111;
+    --text2:   #555555;
+    --text3:   #999999;
+    --text4:   #BBBBBB;
+    --shadow:  rgba(0,0,0,0.10);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--bg);
+    font-family: 'DM Sans', sans-serif;
+    color: var(--text);
+    min-height: 100vh;
+    transition: background 0.3s, color 0.3s;
+    overflow-x: hidden;
+  }
+
+  /* Noise texture */
+  #noise-canvas {
+    position: fixed; inset: 0;
+    width: 100%; height: 100%;
+    pointer-events: none; z-index: 0;
+    opacity: 0.022;
+  }
+  [data-theme="light"] #noise-canvas { opacity: 0.03; }
+
+  /* Floating orbs */
+  .orb {
+    position: fixed; border-radius: 50%;
+    pointer-events: none; z-index: 0; filter: blur(70px);
+  }
+  .orb1 {
+    width: 700px; height: 700px;
+    background: radial-gradient(circle, rgba(0,230,118,0.07) 0%, transparent 70%);
+    top: -280px; left: -250px;
+    animation: drift1 20s ease-in-out infinite alternate;
+  }
+  .orb2 {
+    width: 500px; height: 500px;
+    background: radial-gradient(circle, rgba(0,200,100,0.04) 0%, transparent 70%);
+    bottom: -120px; right: -120px;
+    animation: drift2 25s ease-in-out infinite alternate;
+  }
+  .orb3 {
+    width: 280px; height: 280px;
+    background: radial-gradient(circle, rgba(0,230,118,0.05) 0%, transparent 70%);
+    top: 45%; left: 55%;
+    animation: drift3 17s ease-in-out infinite alternate;
+  }
+  @keyframes drift1 { to { transform: translate(70px, 80px); } }
+  @keyframes drift2 { to { transform: translate(-70px, -60px); } }
+  @keyframes drift3 { to { transform: translate(-50px, 60px); } }
+
+  .app {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 36px 24px 64px;
+    position: relative; z-index: 1;
+  }
+
+  /* ── HEADER ── */
+  .header {
+    display: flex; align-items: center;
+    justify-content: space-between;
+    margin-bottom: 44px;
+    flex-wrap: wrap; gap: 12px;
+  }
+  .logo { display: flex; align-items: center; gap: 10px; cursor: pointer; }
+  .logo-check {
+    width: 32px; height: 32px;
+    background: var(--accent); border-radius: 8px;
+    color: #0A0A0A; display: flex; align-items: center; justify-content: center;
+    position: relative; overflow: hidden;
+  }
+  .logo-check svg {
+    position: absolute; width: 18px; height: 18px;
+  }
+  .logo-check svg path {
+    stroke: #0A0A0A; stroke-width: 2.8;
+    stroke-linecap: round; stroke-linejoin: round; fill: none;
+    stroke-dasharray: 30; stroke-dashoffset: 30;
+    animation: drawCheck 0.55s cubic-bezier(0.4,0,0.2,1) 0.4s forwards;
+  }
+  @keyframes drawCheck { to { stroke-dashoffset: 0; } }
+
+  .logo-text {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 30px; letter-spacing: 5px; color: var(--text);
+  }
+  .header-right { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+  .badge {
+    background: var(--bg2); border: 1px solid var(--border2);
+    color: var(--text2); font-size: 11px; padding: 5px 12px;
+    border-radius: 20px; display: flex; align-items: center; gap: 6px;
+  }
+  .dot {
+    width: 6px; height: 6px; border-radius: 50%;
+    background: var(--accent); animation: pulse 2s infinite;
+  }
+  @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.3} }
+
+  .theme-toggle {
+    background: var(--bg2); border: 1px solid var(--border2);
+    color: var(--text2); width: 36px; height: 36px;
+    border-radius: 10px; cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 16px; transition: all 0.2s; flex-shrink: 0;
+  }
+  .theme-toggle:hover { border-color: var(--accent); color: var(--accent); }
+
+  /* ── HERO with animated gradient ── */
+  .hero {
+    margin-bottom: 40px; padding: 40px;
+    border-radius: 20px; position: relative;
+    overflow: hidden; border: 1px solid var(--border);
+  }
+  .hero-bg {
+    position: absolute; inset: 0; z-index: 0;
+    background: var(--bg2);
+  }
+  .hero-bg::before {
+    content: '';
+    position: absolute; inset: 0;
+    background:
+      radial-gradient(ellipse 90% 70% at -10% 60%, rgba(0,230,118,0.12) 0%, transparent 55%),
+      radial-gradient(ellipse 60% 90% at 110% 10%, rgba(0,180,90,0.07) 0%, transparent 55%);
+    animation: heroPulse 8s ease-in-out infinite alternate;
+  }
+  [data-theme="light"] .hero-bg::before {
+    background:
+      radial-gradient(ellipse 90% 70% at -10% 60%, rgba(0,230,118,0.15) 0%, transparent 55%),
+      radial-gradient(ellipse 60% 90% at 110% 10%, rgba(0,180,90,0.09) 0%, transparent 55%);
+  }
+  @keyframes heroPulse {
+    0%   { opacity: 0.8; transform: scale(1); }
+    50%  { opacity: 1;   transform: scale(1.03) translate(10px,-5px); }
+    100% { opacity: 0.9; transform: scale(0.98) translate(-5px, 8px); }
+  }
+
+  /* Two-column hero */
+  .hero-inner {
+    position: relative; z-index: 1;
+    display: grid;
+    grid-template-columns: 1fr 268px;
+    gap: 28px;
+    align-items: center;
+  }
+  @media(max-width:700px){
+    .hero-inner { grid-template-columns: 1fr; }
+    .ticker-panel { display: none; }
+  }
+
+  .hero-content { min-width: 0; }
+  .hero h1 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(32px, 5vw, 56px);
+    line-height: 1; letter-spacing: 2px;
+    margin-bottom: 14px; color: var(--text);
+  }
+  .hero h1 span { color: var(--accent); }
+  .hero p {
+    font-size: 14px; color: var(--text2);
+    line-height: 1.7; font-weight: 300;
+    margin-bottom: 22px;
+  }
+
+  /* ── TICKER PANEL ── */
+  .ticker-panel {
+    background: rgba(0,0,0,0.2);
+    border: 1px solid var(--border2);
+    border-radius: 16px;
+    padding: 16px 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    align-self: center;
+  }
+  [data-theme="light"] .ticker-panel { background: rgba(255,255,255,0.5); }
+
+  .ticker-heading {
+    font-size: 10px; color: var(--text3);
+    letter-spacing: 2px; text-transform: uppercase;
+    font-weight: 600;
+    display: flex; align-items: center; gap: 7px;
+  }
+
+  .ticker-item {
+    display: flex; align-items: center; gap: 9px;
+    padding: 9px 11px;
+    background: var(--bg3); border: 1px solid var(--border);
+    border-radius: 10px;
+    transition: border-color 0.2s, opacity 0.4s;
+    cursor: default;
+  }
+  .ticker-item:hover { border-color: rgba(0,230,118,0.35); }
+  .ticker-icon { font-size: 15px; flex-shrink: 0; }
+  .ticker-text { flex: 1; min-width: 0; }
+  .ticker-cat {
+    font-size: 11px; font-weight: 600; color: var(--text);
+    white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+  }
+  .ticker-sub { font-size: 10px; color: var(--text3); margin-top: 1px; }
+  .ticker-count {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 18px; color: var(--accent);
+    letter-spacing: 0.5px; flex-shrink: 0;
+  }
+
+  /* ── SEARCH ── */
+  .search-wrap { position: relative; max-width: 420px; }
+  .search-icon {
+    position: absolute; left: 13px; top: 50%;
+    transform: translateY(-50%); color: var(--text3);
+    font-size: 13px; pointer-events: none;
+  }
+  .search-input {
+    width: 100%; background: var(--bg);
+    border: 1px solid var(--border2); color: var(--text);
+    font-family: 'DM Sans', sans-serif; font-size: 13px;
+    padding: 11px 14px 11px 36px; border-radius: 10px;
+    outline: none; transition: border-color 0.2s, box-shadow 0.2s;
+  }
+  [data-theme="light"] .search-input { background: #EDEDЕ8; }
+  .search-input::placeholder { color: var(--text3); }
+  .search-input:focus {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px rgba(0,230,118,0.1);
+  }
+  .search-results {
+    position: absolute; top: calc(100% + 6px);
+    left: 0; right: 0;
+    background: var(--bg2); border: 1px solid var(--border2);
+    border-radius: 12px; overflow: hidden;
+    display: none; z-index: 100;
+    box-shadow: 0 16px 40px var(--shadow);
+  }
+  .search-results.open { display: block; }
+  .sr-item {
+    padding: 10px 14px; cursor: pointer;
+    font-size: 13px; color: var(--text2);
+    display: flex; align-items: center; gap: 10px;
+    transition: background 0.15s;
+    border-bottom: 1px solid var(--border);
+  }
+  .sr-item:last-child { border-bottom: none; }
+  .sr-item:hover { background: var(--bg3); color: var(--text); }
+  .sr-price { font-family: 'Bebas Neue', sans-serif; color: var(--accent); font-size: 15px; }
+  .sr-cat { font-size: 10px; color: var(--text3); }
+  .sr-empty { padding: 14px; font-size: 13px; color: var(--text3); text-align: center; }
+
+  /* ── QUICK PICK BUTTON ── */
+  .quick-pick-btn {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: transparent; border: 1px solid var(--border2);
+    color: var(--text2); font-family: 'DM Sans', sans-serif;
+    font-size: 13px; font-weight: 500;
+    padding: 10px 18px; border-radius: 10px;
+    cursor: pointer; transition: all 0.2s; margin-top: 12px;
+  }
+  .quick-pick-btn:hover {
+    border-color: var(--accent); color: var(--accent);
+    box-shadow: 0 0 20px rgba(0,230,118,0.1);
+  }
+  .qp-dice { font-size: 15px; display: inline-block; }
+  .quick-pick-btn:hover .qp-dice { animation: spinOnce 0.4s ease; }
+  @keyframes spinOnce { 0%{transform:rotate(0)} 100%{transform:rotate(360deg)} }
+
+  /* ── QUICK PICK MODAL ── */
+  .qp-overlay {
+    position: fixed; inset: 0;
+    background: rgba(0,0,0,0.72);
+    backdrop-filter: blur(8px);
+    z-index: 200; display: flex;
+    align-items: center; justify-content: center; padding: 24px;
+    opacity: 0; pointer-events: none; transition: opacity 0.25s;
+  }
+  .qp-overlay.open { opacity: 1; pointer-events: all; }
+  .qp-modal {
+    background: var(--bg2); border: 1px solid var(--border2);
+    border-radius: 20px; padding: 36px;
+    max-width: 400px; width: 100%;
+    transform: translateY(24px);
+    transition: transform 0.35s cubic-bezier(0.34,1.4,0.64,1);
+    position: relative;
+  }
+  .qp-overlay.open .qp-modal { transform: translateY(0); }
+  .qp-close {
+    position: absolute; top: 16px; right: 16px;
+    background: var(--bg3); border: 1px solid var(--border2);
+    color: var(--text2); width: 28px; height: 28px;
+    border-radius: 8px; cursor: pointer; font-size: 13px;
+    display: flex; align-items: center; justify-content: center;
+    transition: all 0.2s;
+  }
+  .qp-close:hover { color: var(--text); border-color: var(--text3); }
+  .qp-eyebrow {
+    font-size: 11px; color: var(--accent);
+    letter-spacing: 2px; text-transform: uppercase;
+    font-weight: 600; margin-bottom: 10px;
+  }
+  .qp-name {
+    font-size: 18px; font-weight: 600; color: var(--text);
+    line-height: 1.4; margin-bottom: 14px;
+  }
+  .qp-stars { color: #FFD700; font-size: 13px; }
+  .qp-meta-row { display: flex; align-items: center; gap: 8px; margin-bottom: 4px; }
+  .qp-meta-txt { font-size: 12px; color: var(--text3); }
+  .qp-catline { font-size: 11px; color: var(--text3); margin-top: 4px; margin-bottom: 16px; }
+  .qp-price {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 44px; color: var(--accent);
+    letter-spacing: 1px; margin-bottom: 22px;
+  }
+  .qp-cta {
+    display: block; width: 100%; padding: 14px;
+    background: var(--accent); color: #0A0A0A;
+    border: none; border-radius: 10px;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 18px; letter-spacing: 2px;
+    cursor: pointer; transition: all 0.2s; margin-bottom: 10px;
+  }
+  .qp-cta:hover { background: #00FF85; box-shadow: 0 8px 24px rgba(0,230,118,0.3); }
+  .qp-again {
+    display: block; width: 100%; padding: 11px;
+    background: transparent; border: 1px solid var(--border2);
+    color: var(--text2); border-radius: 10px;
+    font-family: 'DM Sans', sans-serif; font-size: 13px;
+    cursor: pointer; transition: all 0.2s;
+  }
+  .qp-again:hover { border-color: var(--text3); color: var(--text); }
+
+  /* ── SCREENS & TRANSITIONS ── */
+  .screen { display: none; }
+  .screen.active { display: block; }
+  @keyframes slideIn     { from{opacity:0;transform:translateX(44px)} to{opacity:1;transform:translateX(0)} }
+  @keyframes slideOut    { from{opacity:1;transform:translateX(0)} to{opacity:0;transform:translateX(-30px)} }
+  @keyframes slideBackIn { from{opacity:0;transform:translateX(-44px)} to{opacity:1;transform:translateX(0)} }
+  .slide-in      { animation: slideIn 0.36s cubic-bezier(0.4,0,0.2,1) forwards; }
+  .slide-out     { animation: slideOut 0.22s cubic-bezier(0.4,0,0.2,1) forwards; }
+  .slide-back-in { animation: slideBackIn 0.36s cubic-bezier(0.4,0,0.2,1) forwards; }
+
+  /* ── CATEGORY GRID ── */
+  .section-label {
+    font-size: 11px; color: var(--text3);
+    letter-spacing: 2px; text-transform: uppercase;
+    font-weight: 600; margin-bottom: 6px;
+  }
+  .section-sublabel {
+    font-size: 11px; color: var(--text4);
+    margin-bottom: 18px; display: flex; align-items: center; gap: 6px;
+  }
+  .section-sublabel em { color: var(--accent); font-style: normal; }
+
+  .tier-row { display: grid; gap: 10px; }
+  .tier-row.cols-5 { grid-template-columns: repeat(5,1fr); }
+  .tier-row.cols-9 { grid-template-columns: repeat(9,1fr); }
+  .tier-row.cols-8 { grid-template-columns: repeat(8,1fr); }
+  @media(max-width:780px){
+    .tier-row.cols-5,.tier-row.cols-9,.tier-row.cols-8 { grid-template-columns: repeat(3,1fr); }
+  }
+  @media(max-width:480px){
+    .tier-row.cols-5,.tier-row.cols-9,.tier-row.cols-8 { grid-template-columns: repeat(2,1fr); }
+  }
+
+  .cat-btn {
+    background: var(--bg3); border: 1px solid var(--border2);
+    color: var(--text2); padding: 12px 10px; border-radius: 12px;
+    cursor: pointer; font-family: 'DM Sans', sans-serif;
+    font-size: 12px; font-weight: 500;
+    transition: all 0.2s;
+    display: flex; align-items: center; justify-content: center;
+    gap: 7px; white-space: nowrap; width: 100%;
+  }
+  .cat-btn:hover {
+    background: var(--bg2); border-color: var(--accent);
+    color: var(--text); transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(0,230,118,0.1);
+  }
+  .cat-btn.hot { border-color: rgba(0,230,118,0.25); }
+  .cat-btn.hot::after { content:'🔥'; font-size:10px; margin-left:2px; }
+  .cat-icon { font-size: 16px; }
+
+  .tier-label {
+    display: flex; align-items: center; gap: 10px; margin: 18px 0 10px;
+  }
+  .tier-label-text {
+    font-size: 10px; color: var(--text4);
+    letter-spacing: 2px; text-transform: uppercase; white-space: nowrap;
+  }
+  .tier-label-line { flex: 1; height: 1px; background: var(--border); }
+
+  /* ── PRODUCT SCREEN ── */
+  .back-row {
+    display: flex; align-items: center; gap: 14px;
+    margin-bottom: 28px; flex-wrap: wrap;
+  }
+  .back-btn {
+    background: transparent; border: 1px solid var(--border2);
+    color: var(--text2); padding: 9px 18px; border-radius: 8px;
+    cursor: pointer; font-family: 'DM Sans', sans-serif;
+    font-size: 13px; transition: all 0.2s;
+  }
+  .back-btn:hover { border-color: var(--text3); color: var(--text); }
+  .cat-title {
+    font-family: 'Bebas Neue', sans-serif; font-size: 26px;
+    letter-spacing: 3px; display: flex; align-items: center; gap: 10px;
+    color: var(--text);
+  }
+  .sub-label { font-size: 12px; color: var(--text4); margin-bottom: 22px; }
+
+  .product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px,1fr));
+    gap: 16px;
+  }
+  .card-img {
+    width: 100%; height: 160px;
+    object-fit: contain;
+    border-radius: 10px;
+    margin-bottom: 16px;
+    background: var(--bg3);
+    padding: 8px;
+  }
+  .card {
+    background: var(--bg2); border: 1px solid var(--border);
+    border-radius: 16px; padding: 26px;
+    position: relative; overflow: hidden;
+    cursor: pointer; transition: all 0.25s;
+    opacity: 0;
+  }
+  .card:nth-child(1){animation:cardIn 0.4s ease 0.05s forwards}
+  .card:nth-child(2){animation:cardIn 0.4s ease 0.15s forwards}
+  .card:nth-child(3){animation:cardIn 0.4s ease 0.25s forwards}
+  @keyframes cardIn{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
+
+  .card::before {
+    content:''; position:absolute; top:0;left:0;right:0;height:2px;
+    background:var(--rc); opacity:0; transition:opacity 0.25s;
+  }
+  .card:hover::before{opacity:1}
+  .card:hover{
+    border-color:var(--border2); transform:translateY(-4px);
+    box-shadow:0 20px 40px var(--shadow); background:var(--bg3);
+  }
+  .rank-bg {
+    font-family:'Bebas Neue',sans-serif; font-size:56px;
+    color:var(--rc); opacity:0.12;
+    position:absolute; top:12px;right:18px;
+    line-height:1; user-select:none; transition:opacity 0.25s;
+  }
+  .card:hover .rank-bg{opacity:0.3}
+  .tag {
+    display:inline-flex;align-items:center;gap:4px;
+    background:rgba(0,230,118,0.08);border:1px solid rgba(0,230,118,0.2);
+    color:var(--accent);font-size:10px;font-weight:600;
+    padding:4px 10px;border-radius:20px;
+    letter-spacing:0.5px;text-transform:uppercase;margin-bottom:14px;
+  }
+  .product-name {
+    font-size:16px;font-weight:600;color:var(--text);
+    line-height:1.4;margin-bottom:14px;padding-right:36px;
+  }
+  .stars{color:#FFD700;font-size:12px;letter-spacing:1px}
+  .meta{display:flex;align-items:center;gap:8px;margin-bottom:10px}
+  .meta-text{font-size:12px;color:var(--text3)}
+  .price{
+    font-family:'Bebas Neue',sans-serif;font-size:32px;
+    color:var(--accent);letter-spacing:1px;margin-bottom:18px;
+  }
+  .cta{
+    display:block;width:100%;padding:13px;
+    background:var(--accent);color:#0A0A0A;
+    border:none;border-radius:10px;
+    font-family:'Bebas Neue',sans-serif;font-size:17px;letter-spacing:2px;
+    cursor:pointer;transition:all 0.2s;text-align:center;
+  }
+  .cta:hover{background:#00FF85;box-shadow:0 8px 24px rgba(0,230,118,0.3)}
+
+  .footer-note{
+    font-size:11px;color:var(--text4);
+    text-align:center;margin-top:32px;line-height:1.8;
+  }
+</style>
 </head>
 <body>
+<div style="display:none">Impact-Site-Verification: 9a7cce8e-d071-4cd8-a687-972e5734754f</div>
+<canvas id="noise-canvas"></canvas>
+<div class="orb orb1"></div>
+<div class="orb orb2"></div>
+<div class="orb orb3"></div>
 
-  <!-- NAV -->
-  <nav>
-    <a href="#hero" class="nav-logo">Garay<span>Tech</span></a>
-    <ul class="nav-links">
-      <li><a href="#services">Services</a></li>
-      <li><a href="#about">About</a></li>
-      <li><a href="#contact">Contact</a></li>
-    </ul>
-  </nav>
+<!-- Quick Pick Modal -->
+<div class="qp-overlay" id="qp-overlay">
+  <div class="qp-modal">
+    <button class="qp-close" onclick="closeQP()">✕</button>
+    <div class="qp-eyebrow">⚡ Quick Pick</div>
+    <div class="qp-name" id="qp-name"></div>
+    <div class="qp-meta-row">
+      <span class="qp-stars" id="qp-stars"></span>
+      <span class="qp-meta-txt" id="qp-rating"></span>
+    </div>
+    <div class="qp-catline" id="qp-cat"></div>
+    <div class="qp-price" id="qp-price"></div>
+    <button class="qp-cta" id="qp-cta">SHOP NOW →</button>
+    <button class="qp-again" onclick="quickPick()">🎲 Pick again</button>
+  </div>
+</div>
 
-  <!-- HERO -->
-  <div id="hero">
-    <p class="hero-label fade-in delay-1">Prague · Czech Republic</p>
-    <h1 class="hero-headline fade-in delay-2">
-      International trade<br><em>and</em> IT consultancy.<br>Under one roof.
-    </h1>
-    <p class="hero-sub fade-in delay-3">
-      GarayTech works with businesses that need a reliable trading partner,
-      a fractional commercial leader for CEE market entry, or both.
-    </p>
-    <div class="hero-pills fade-in delay-4">
-      <span class="pill pill-trade">Trading</span>
-      <span class="pill pill-it">IT Consultancy</span>
+<div class="app">
+
+  <div class="header">
+    <div class="logo" onclick="goHome()">
+      <div class="logo-check">
+        <svg viewBox="0 0 18 18"><path d="M3 9l4 4 8-8"/></svg>
+      </div>
+      <div class="logo-text">DECIDED</div>
+    </div>
+    <div class="header-right">
+      <div class="badge"><span class="dot"></span> Updated weekly · Verified top sellers</div>
+      <button class="theme-toggle" id="theme-btn" onclick="toggleTheme()" title="Toggle light/dark">🌙</button>
     </div>
   </div>
 
-  <!-- SERVICES -->
-  <section id="services">
-    <div class="section-header">
-      <span class="section-label-inline">01</span>
-      <h2 class="section-title">What we do</h2>
+  <!-- HOME -->
+  <div class="screen active" id="screen-home">
+
+    <div class="hero">
+      <div class="hero-bg"></div>
+      <div class="hero-inner">
+
+        <!-- Left: copy + search + CTA -->
+        <div class="hero-content">
+          <h1>SKIP THE HUSTLE.<br><span>PICK FROM THE TOP 3.</span></h1>
+          <p>No endless scrolling. No research rabbit holes. Just the 3 best-selling products in any category — verified by millions of real shoppers.</p>
+
+          <div class="search-wrap">
+            <span class="search-icon">🔍</span>
+            <input class="search-input" id="search-input" type="text"
+              placeholder="Search categories or products…"
+              oninput="onSearch(this.value)"
+              onfocus="onSearch(this.value)"
+              onblur="closeSearchDelay()">
+            <div class="search-results" id="search-results"></div>
+          </div>
+
+          <button class="quick-pick-btn" onclick="quickPick()">
+            <span class="qp-dice">🎲</span> Quick Pick — Surprise me
+          </button>
+        </div>
+
+        <!-- Right: live activity ticker -->
+        <div class="ticker-panel">
+          <div class="ticker-heading">
+            <span class="dot"></span> People shopping today
+          </div>
+          <div id="ticker-list"></div>
+        </div>
+
+      </div>
     </div>
 
-    <div class="services-grid">
+    <div class="section-label">Choose a category</div>
 
-      <div class="service-card">
-        <div class="service-accent" style="background: var(--accent-trade);"></div>
-        <h3 class="service-card-title" style="color: var(--accent-trade);">Trading</h3>
-        <p class="service-card-body">
-          We source and trade commodities internationally, with deep roots in the natural ingredients
-          sector. Our network spans suppliers, logistics partners, and buyers across Europe and beyond.
-          We handle the complexity of cross-border trade so you don't have to.
-        </p>
-        <div class="service-tags">
-          <span class="tag tag-trade">Commodity sourcing</span>
-          <span class="tag tag-trade">Import / export</span>
-          <span class="tag tag-trade">Natural ingredients</span>
-          <span class="tag tag-trade">European markets</span>
-        </div>
-      </div>
-
-      <div class="service-card">
-        <div class="service-accent" style="background: var(--accent-it);"></div>
-        <h3 class="service-card-title" style="color: var(--accent-it);">IT Consultancy</h3>
-        <p class="service-card-body">
-          We help technology companies open and scale in Central and Eastern Europe. With 25 years
-          of B2B sales and market entry experience across CEE and CIS — at Oracle, HPE, Saxo Bank,
-          and Bohemia Interactive Simulations — we know this region's buyers, culture, and dynamics
-          from the inside. We engage on a fractional or interim basis: embedded commercial leadership,
-          2–3 days per week, with a defined outcome. We build pipeline, close first clients, establish
-          partnerships, and if needed, hire and build your local team from scratch. You get a
-          functioning commercial operation — not just advice.
-        </p>
-        <div class="service-tags">
-          <span class="tag tag-it">CEE market entry</span>
-          <span class="tag tag-it">Fractional sales leadership</span>
-          <span class="tag tag-it">Team building</span>
-          <span class="tag tag-it">Go-to-market</span>
-          <span class="tag tag-it">AI &amp; tech sectors</span>
-          <span class="tag tag-it">Interim VP Sales</span>
-        </div>
-      </div>
-
+    <div class="tier-row cols-5">
+      <button class="cat-btn hot" onclick="show('electronics','⚡','Electronics')"><span class="cat-icon">⚡</span> Electronics</button>
+      <button class="cat-btn hot" onclick="show('beauty','✨','Beauty')"><span class="cat-icon">✨</span> Beauty</button>
+      <button class="cat-btn hot" onclick="show('fitness','💪','Fitness')"><span class="cat-icon">💪</span> Fitness</button>
+      <button class="cat-btn hot" onclick="show('tools','🔧','Tools & Hardware')"><span class="cat-icon">🔧</span> Tools</button>
+      <button class="cat-btn hot" onclick="show('computers','💻','Computers')"><span class="cat-icon">💻</span> Computers</button>
     </div>
-  </section>
 
-  <!-- PRAGUE BAND -->
-  <div class="prague-band">
-    <img
-      src="https://images.unsplash.com/photo-1772202950305-2e6fee0b1ab3?w=1600&q=80&auto=format&fit=crop"
-      alt="Charles Bridge, Prague"
-      loading="lazy"
-    />
-    <div class="prague-band-overlay"></div>
-    <span class="prague-caption">Prague · Czech Republic</span>
+    <div class="tier-row cols-9" style="margin-top:10px">
+      <button class="cat-btn" onclick="show('kitchen','🍳','Kitchen')"><span class="cat-icon">🍳</span> Kitchen</button>
+      <button class="cat-btn" onclick="show('home','🏡','Home & Garden')"><span class="cat-icon">🏡</span> Home</button>
+      <button class="cat-btn" onclick="show('sports','⛺','Sports & Outdoors')"><span class="cat-icon">⛺</span> Sports</button>
+      <button class="cat-btn" onclick="show('health','❤️','Health')"><span class="cat-icon">❤️</span> Health</button>
+      <button class="cat-btn" onclick="show('office','🖊️','Office')"><span class="cat-icon">🖊️</span> Office</button>
+      <button class="cat-btn" onclick="show('gaming','🎮','Gaming')"><span class="cat-icon">🎮</span> Gaming</button>
+      <button class="cat-btn" onclick="show('auto','🚗','Auto & Tires')"><span class="cat-icon">🚗</span> Auto</button>
+      <button class="cat-btn" onclick="show('lighting','💡','Smart Home')"><span class="cat-icon">💡</span> Smart Home</button>
+      <button class="cat-btn" onclick="show('music','🎵','Music')"><span class="cat-icon">🎵</span> Music</button>
+    </div>
+
+    <div class="tier-row cols-8" style="margin-top:10px">
+      <button class="cat-btn" onclick="show('toys','🧸','Toys & Games')"><span class="cat-icon">🧸</span> Toys</button>
+      <button class="cat-btn" onclick="show('fashion','👗','Fashion')"><span class="cat-icon">👗</span> Fashion</button>
+      <button class="cat-btn" onclick="show('baby','🍼','Baby')"><span class="cat-icon">🍼</span> Baby</button>
+      <button class="cat-btn" onclick="show('pets','🐾','Pet Supplies')"><span class="cat-icon">🐾</span> Pets</button>
+      <button class="cat-btn" onclick="show('books','📚','Books')"><span class="cat-icon">📚</span> Books</button>
+      <button class="cat-btn" onclick="show('crafts','🎨','Arts & Crafts')"><span class="cat-icon">🎨</span> Crafts</button>
+      <button class="cat-btn" onclick="show('travel','🧳','Travel')"><span class="cat-icon">🧳</span> Travel</button>
+      <button class="cat-btn" onclick="show('food','🛒','Grocery')"><span class="cat-icon">🛒</span> Grocery</button>
+    </div>
+
+  </div><!-- /screen-home -->
+
+  <!-- PRODUCTS -->
+  <div class="screen" id="screen-products">
+    <div class="back-row">
+      <button class="back-btn" onclick="goHome()">← All categories</button>
+      <div class="cat-title" id="cat-title"></div>
+    </div>
+    <div class="sub-label">3 products. That's it. The rest is decided. ✓</div>
+    <div class="product-grid" id="product-grid"></div>
+    <div class="footer-note">
+      As an affiliate, we may earn a commission when you purchase through our links.<br>
+      Rankings updated weekly from verified sales data.
+    </div>
   </div>
 
-  <!-- ABOUT -->
-  <section id="about">
-    <div class="about-left">
-      <span class="section-label-inline">02</span>
-      <span class="section-title">About</span>
-    </div>
-    <div class="about-body">
-      <p>
-        GarayTech is a Czech-registered company with two distinct but complementary areas of
-        activity. Our trading practice is built on years of experience in the global commodities
-        market — sourcing, moving, and placing goods across international borders, with a
-        particular focus on natural and specialty ingredients through our sister brand
-        <strong>Bulkvanilla</strong>.
-      </p>
-      <p>
-        Our IT consultancy practice is built on 25 years of B2B sales and market entry experience
-        across Central and Eastern Europe, CIS, and Russia. We work with technology companies —
-        particularly US, Israeli, and Western European firms — that need a senior commercial leader
-        on the ground in CEE. On a fractional or interim basis, we open markets, build pipeline,
-        establish partnerships, and where needed, <strong>build sales teams from scratch</strong>.
-        The engagement ends with a functioning commercial operation, not a slide deck.
-      </p>
-      <p>
-        We are a small, focused operation. That means you talk to the people who actually
-        do the work.
-      </p>
-    </div>
-  </section>
+</div><!-- /app -->
 
-  <!-- CONTACT -->
-  <section id="contact">
-    <div class="section-header">
-      <span class="section-label-inline">03</span>
-      <h2 class="section-title">Get in touch</h2>
-    </div>
+<script>
+/* ─── DATA ──────────────────────────────────────────────────────── */
+const catMeta  = {electronics:'⚡',beauty:'✨',fitness:'💪',tools:'🔧',computers:'💻',kitchen:'🍳',home:'🏡',sports:'⛺',health:'❤️',office:'🖊️',gaming:'🎮',auto:'🚗',lighting:'💡',music:'🎵',toys:'🧸',fashion:'👗',baby:'🍼',pets:'🐾',books:'📚',crafts:'🎨',travel:'🧳',food:'🛒'};
+const catLabel = {electronics:'Electronics',beauty:'Beauty',fitness:'Fitness',tools:'Tools & Hardware',computers:'Computers',kitchen:'Kitchen',home:'Home & Garden',sports:'Sports & Outdoors',health:'Health',office:'Office',gaming:'Gaming',auto:'Auto & Tires',lighting:'Smart Home',music:'Music',toys:'Toys & Games',fashion:'Fashion',baby:'Baby',pets:'Pet Supplies',books:'Books',crafts:'Arts & Crafts',travel:'Travel',food:'Grocery'};
 
-    <div class="contact-grid">
+const data = {
+  electronics:[
+    {rank:"#1",tag:"Best Seller",name:"Projector Remote Control for Epson Projectors",rating:4.5,reviews:"224",price:"$9.99",rc:"#00E676",id:"https://amzn.to/4wghkEc",img:"https://images-na.ssl-images-amazon.com/images/I/61O4xLH+XRL._AC_UL900_SR900,600_.jpg"},
+    {rank:"#2",tag:"Top Rated",name:"Flat Plug Extension Cord, HANYCONY 5ft Power Strip with 4 USB Ports",rating:4.7,reviews:"12K",price:"$17.99",rc:"#69F0AE",id:"https://amzn.to/3Prwrdp",img:"https://images-na.ssl-images-amazon.com/images/I/518tiMuntLL._AC_UL900_SR900,600_.jpg"},
+    {rank:"#3",tag:"Popular",name:"Antool Wired Earbuds 3.5mm with Mic, 2 Pack",rating:4.3,reviews:"10K",price:"$9.99",rc:"#B9F6CA",id:"https://amzn.to/3QWLwUL",img:"https://images-na.ssl-images-amazon.com/images/I/61gKr4Ecm9L._AC_UL900_SR900,600_.jpg"},
+  ],
+  beauty:[
+    {rank:"#1",tag:"Best Seller",name:"Dyson Airwrap Multi-Styler",rating:4.6,reviews:"41K",price:"$499.99",rc:"#00E676",id:"467603654"},
+    {rank:"#2",tag:"Top Rated",name:"CeraVe Moisturizing Cream 16 oz",rating:4.8,reviews:"213K",price:"$19.97",rc:"#69F0AE",id:"44451267"},
+    {rank:"#3",tag:"Popular",name:"Revlon One-Step Hair Dryer & Styler",rating:4.6,reviews:"178K",price:"$59.99",rc:"#B9F6CA",id:"488917374"},
+  ],
+  fitness:[
+    {rank:"#1",tag:"Best Seller",name:"Resistance Bands Set (11 pcs)",rating:4.7,reviews:"67K",price:"$29.99",rc:"#00E676",id:"839477291"},
+    {rank:"#2",tag:"Top Rated",name:"Fitbit Charge 6 Fitness Tracker",rating:4.5,reviews:"32K",price:"$159.95",rc:"#69F0AE",id:"4985632718"},
+    {rank:"#3",tag:"Popular",name:"Bowflex SelectTech 552 Dumbbells",rating:4.8,reviews:"21K",price:"$329.00",rc:"#B9F6CA",id:"46390661"},
+  ],
+  tools:[
+    {rank:"#1",tag:"Best Seller",name:"DEWALT 20V MAX Cordless Drill Combo Kit",rating:4.8,reviews:"52K",price:"$179.00",rc:"#00E676",id:"193847261"},
+    {rank:"#2",tag:"Top Rated",name:"BLACK+DECKER 6-Tool Combo Kit",rating:4.7,reviews:"38K",price:"$129.00",rc:"#69F0AE",id:"284756372"},
+    {rank:"#3",tag:"Popular",name:"Stanley 65-Piece Mechanics Tool Set",rating:4.7,reviews:"44K",price:"$49.97",rc:"#B9F6CA",id:"375861483"},
+  ],
+  computers:[
+    {rank:"#1",tag:"Best Seller",name:"Acer Aspire 5 15.6\" Laptop, Intel i5",rating:4.5,reviews:"29K",price:"$499.99",rc:"#00E676",id:"466972594"},
+    {rank:"#2",tag:"Top Rated",name:"HP 27\" FHD IPS Monitor",rating:4.7,reviews:"41K",price:"$199.99",rc:"#69F0AE",id:"557083605"},
+    {rank:"#3",tag:"Popular",name:"Logitech MX Keys S Wireless Keyboard",rating:4.7,reviews:"18K",price:"$109.99",rc:"#B9F6CA",id:"648194716"},
+  ],
+  kitchen:[
+    {rank:"#1",tag:"Best Seller",name:"Instant Pot Duo 7-in-1, 6 Qt",rating:4.8,reviews:"135K",price:"$89.95",rc:"#00E676",id:"307649841"},
+    {rank:"#2",tag:"Top Rated",name:"Ninja AF101 Air Fryer 4 Qt",rating:4.7,reviews:"72K",price:"$99.99",rc:"#69F0AE",id:"473961823"},
+    {rank:"#3",tag:"Popular",name:"OXO Good Grips Cutting Board Set",rating:4.7,reviews:"44K",price:"$34.99",rc:"#B9F6CA",id:"38804783"},
+  ],
+  home:[
+    {rank:"#1",tag:"Best Seller",name:"Levoit Core 300 Air Purifier",rating:4.7,reviews:"89K",price:"$99.99",rc:"#00E676",id:"574925090"},
+    {rank:"#2",tag:"Top Rated",name:"COSORI Air Fryer 5.8 Qt",rating:4.7,reviews:"76K",price:"$99.99",rc:"#69F0AE",id:"573906539"},
+    {rank:"#3",tag:"Popular",name:"Beckham Hotel Microfiber Pillows 2pk",rating:4.6,reviews:"201K",price:"$29.99",rc:"#B9F6CA",id:"194221892"},
+  ],
+  sports:[
+    {rank:"#1",tag:"Best Seller",name:"Coleman Sundome 4-Person Tent",rating:4.7,reviews:"41K",price:"$89.99",rc:"#00E676",id:"738291046"},
+    {rank:"#2",tag:"Top Rated",name:"Hydro Flask 32 oz Water Bottle",rating:4.8,reviews:"67K",price:"$44.95",rc:"#69F0AE",id:"829301475"},
+    {rank:"#3",tag:"Popular",name:"Spalding NBA Official Game Ball",rating:4.7,reviews:"22K",price:"$169.99",rc:"#B9F6CA",id:"910284736"},
+  ],
+  health:[
+    {rank:"#1",tag:"Best Seller",name:"Theragun Mini Massage Gun",rating:4.6,reviews:"28K",price:"$179.00",rc:"#00E676",id:"389274610"},
+    {rank:"#2",tag:"Top Rated",name:"Omron Blood Pressure Monitor",rating:4.7,reviews:"64K",price:"$49.99",rc:"#69F0AE",id:"102938471"},
+    {rank:"#3",tag:"Popular",name:"Vitamin D3 5000 IU (365 softgels)",rating:4.8,reviews:"112K",price:"$14.98",rc:"#B9F6CA",id:"293847561"},
+  ],
+  office:[
+    {rank:"#1",tag:"Best Seller",name:"HP 67 Ink Cartridges Combo Pack",rating:4.6,reviews:"61K",price:"$34.99",rc:"#00E676",id:"394857162"},
+    {rank:"#2",tag:"Top Rated",name:"AmazonBasics Mesh Office Chair",rating:4.5,reviews:"33K",price:"$89.99",rc:"#69F0AE",id:"485968273"},
+    {rank:"#3",tag:"Popular",name:"Post-it Super Sticky Notes 24-Pack",rating:4.8,reviews:"48K",price:"$24.97",rc:"#B9F6CA",id:"576079384"},
+  ],
+  gaming:[
+    {rank:"#1",tag:"Best Seller",name:"Nintendo Switch OLED Model",rating:4.8,reviews:"47K",price:"$349.99",rc:"#00E676",id:"667180495"},
+    {rank:"#2",tag:"Top Rated",name:"Sony PS5 DualSense Controller",rating:4.7,reviews:"39K",price:"$69.99",rc:"#69F0AE",id:"758291506"},
+    {rank:"#3",tag:"Popular",name:"SteelSeries Arctis Nova 3 Headset",rating:4.6,reviews:"21K",price:"$79.99",rc:"#B9F6CA",id:"849302617"},
+  ],
+  auto:[
+    {rank:"#1",tag:"Best Seller",name:"Armor All Original Protectant 16oz",rating:4.7,reviews:"58K",price:"$7.47",rc:"#00E676",id:"101928374"},
+    {rank:"#2",tag:"Top Rated",name:"Michelin 2-in-1 Tire Gauge 100 PSI",rating:4.8,reviews:"44K",price:"$12.99",rc:"#69F0AE",id:"192837401"},
+    {rank:"#3",tag:"Popular",name:"NOCO Boost Plus GB40 Jump Starter",rating:4.8,reviews:"31K",price:"$99.95",rc:"#B9F6CA",id:"283746102"},
+  ],
+  lighting:[
+    {rank:"#1",tag:"Best Seller",name:"Amazon Echo Show 5 (3rd Gen)",rating:4.7,reviews:"36K",price:"$89.99",rc:"#00E676",id:"940413728"},
+    {rank:"#2",tag:"Top Rated",name:"Kasa Smart Plug Mini 15A (4-pack)",rating:4.7,reviews:"82K",price:"$27.99",rc:"#69F0AE",id:"031524839"},
+    {rank:"#3",tag:"Popular",name:"Govee LED Strip Lights 65ft",rating:4.5,reviews:"94K",price:"$29.99",rc:"#B9F6CA",id:"122635940"},
+  ],
+  music:[
+    {rank:"#1",tag:"Best Seller",name:"Yamaha P-45 88-Key Digital Piano",rating:4.7,reviews:"19K",price:"$499.99",rc:"#00E676",id:"213746051"},
+    {rank:"#2",tag:"Top Rated",name:"Donner DED-80 Electronic Drum Set",rating:4.5,reviews:"14K",price:"$299.99",rc:"#69F0AE",id:"304857162"},
+    {rank:"#3",tag:"Popular",name:"Fender Squier Stratocaster Pack",rating:4.6,reviews:"11K",price:"$299.99",rc:"#B9F6CA",id:"395968273"},
+  ],
+  toys:[
+    {rank:"#1",tag:"Best Seller",name:"LEGO Icons Flower Bouquet 18+",rating:4.9,reviews:"34K",price:"$49.99",rc:"#00E676",id:"474328795"},
+    {rank:"#2",tag:"Top Rated",name:"Osmo Genius Starter Kit",rating:4.6,reviews:"18K",price:"$79.99",rc:"#69F0AE",id:"142977398"},
+    {rank:"#3",tag:"Popular",name:"Hasbro Jenga Classic Game",rating:4.8,reviews:"92K",price:"$14.99",rc:"#B9F6CA",id:"22783123"},
+  ],
+  fashion:[
+    {rank:"#1",tag:"Best Seller",name:"Levi's 501 Original Fit Jeans",rating:4.6,reviews:"43K",price:"$59.99",rc:"#00E676",id:"847392011"},
+    {rank:"#2",tag:"Top Rated",name:"Champion Reverse Weave Hoodie",rating:4.7,reviews:"31K",price:"$44.99",rc:"#69F0AE",id:"739201847"},
+    {rank:"#3",tag:"Popular",name:"Hanes EcoSmart Fleece Sweatshirt",rating:4.5,reviews:"88K",price:"$19.98",rc:"#B9F6CA",id:"628410293"},
+  ],
+  baby:[
+    {rank:"#1",tag:"Best Seller",name:"Halo BassiNest Swivel Sleeper",rating:4.7,reviews:"19K",price:"$199.00",rc:"#00E676",id:"192837465"},
+    {rank:"#2",tag:"Top Rated",name:"Graco Pack 'n Play Portable Playard",rating:4.6,reviews:"47K",price:"$79.99",rc:"#69F0AE",id:"283746510"},
+    {rank:"#3",tag:"Popular",name:"Pampers Swaddlers Diapers Size 1",rating:4.8,reviews:"93K",price:"$34.97",rc:"#B9F6CA",id:"374651029"},
+  ],
+  pets:[
+    {rank:"#1",tag:"Best Seller",name:"KONG Classic Dog Toy Large",rating:4.8,reviews:"76K",price:"$14.99",rc:"#00E676",id:"465102938"},
+    {rank:"#2",tag:"Top Rated",name:"Purina Pro Plan Dry Dog Food 35lb",rating:4.8,reviews:"54K",price:"$69.98",rc:"#69F0AE",id:"556019283"},
+    {rank:"#3",tag:"Popular",name:"Catit Flower Water Fountain",rating:4.6,reviews:"38K",price:"$29.99",rc:"#B9F6CA",id:"647928301"},
+  ],
+  books:[
+    {rank:"#1",tag:"Best Seller",name:"Atomic Habits – James Clear",rating:4.9,reviews:"203K",price:"$14.29",rc:"#00E676",id:"738039294"},
+    {rank:"#2",tag:"Top Rated",name:"The Subtle Art of Not Giving a F*ck",rating:4.7,reviews:"141K",price:"$12.99",rc:"#69F0AE",id:"829140305"},
+    {rank:"#3",tag:"Popular",name:"Harry Potter Complete 7-Book Series",rating:4.9,reviews:"89K",price:"$79.99",rc:"#B9F6CA",id:"910251416"},
+  ],
+  crafts:[
+    {rank:"#1",tag:"Best Seller",name:"Cricut Explore 3 Cutting Machine",rating:4.7,reviews:"27K",price:"$249.99",rc:"#00E676",id:"001362527"},
+    {rank:"#2",tag:"Top Rated",name:"Arteza Acrylic Paint Set 60 Colors",rating:4.7,reviews:"48K",price:"$39.99",rc:"#69F0AE",id:"092473638"},
+    {rank:"#3",tag:"Popular",name:"Fiskars 8\" Razor-Edge Scissors 3pk",rating:4.8,reviews:"63K",price:"$19.97",rc:"#B9F6CA",id:"183584749"},
+  ],
+  travel:[
+    {rank:"#1",tag:"Best Seller",name:"Samsonite Omni PC Hardside Spinner 28\"",rating:4.7,reviews:"31K",price:"$179.99",rc:"#00E676",id:"274695850"},
+    {rank:"#2",tag:"Top Rated",name:"BAGSMART Travel Toiletry Bag",rating:4.6,reviews:"44K",price:"$29.99",rc:"#69F0AE",id:"365706961"},
+    {rank:"#3",tag:"Popular",name:"Travelon Anti-Theft Classic Bag",rating:4.5,reviews:"22K",price:"$54.99",rc:"#B9F6CA",id:"456817072"},
+  ],
+  food:[
+    {rank:"#1",tag:"Best Seller",name:"Folgers Classic Roast Ground Coffee 43.5oz",rating:4.8,reviews:"118K",price:"$13.97",rc:"#00E676",id:"547928183"},
+    {rank:"#2",tag:"Top Rated",name:"Nature Valley Granola Bars Variety 40ct",rating:4.7,reviews:"76K",price:"$17.98",rc:"#69F0AE",id:"638039294"},
+    {rank:"#3",tag:"Popular",name:"Kirkland Signature Trail Mix 4lb",rating:4.8,reviews:"52K",price:"$19.98",rc:"#B9F6CA",id:"729140305"},
+  ],
+};
 
-      <div>
-        <p class="contact-intro">
-          Tell us what you're working on. Whether it's a trading enquiry or a CEE market entry
-          challenge, we'll read it and come back to you directly.
-        </p>
-        <div class="contact-links">
-          <div class="contact-link-row">
-            <span class="contact-link-label">LinkedIn</span>
-            <a href="https://www.linkedin.com/company/bulk-vanilla-s-r-o/" target="_blank" rel="noopener" class="contact-link-val">Bulk Vanilla s.r.o.</a>
-          </div>
-          <div class="contact-link-row">
-            <span class="contact-link-label">Vanilla</span>
-            <a href="https://bulkvanilla.eu" target="_blank" rel="noopener" class="contact-link-val">bulkvanilla.eu</a>
-          </div>
+/* ─── NOISE ─────────────────────────────────────────────────────── */
+(function(){
+  const c = document.getElementById('noise-canvas');
+  const ctx = c.getContext('2d');
+  function resize(){ c.width=innerWidth; c.height=innerHeight; }
+  function tick(){
+    const w=c.width,h=c.height,img=ctx.createImageData(w,h),d=img.data;
+    for(let i=0;i<d.length;i+=4){ const v=(Math.random()*255)|0; d[i]=d[i+1]=d[i+2]=v; d[i+3]=255; }
+    ctx.putImageData(img,0,0);
+    setTimeout(()=>requestAnimationFrame(tick),100);
+  }
+  resize(); window.addEventListener('resize',resize); tick();
+})();
+
+/* ─── THEME ─────────────────────────────────────────────────────── */
+function toggleTheme(){
+  const dark = document.documentElement.getAttribute('data-theme')==='dark';
+  document.documentElement.setAttribute('data-theme', dark?'light':'dark');
+  document.getElementById('theme-btn').textContent = dark ? '☀️' : '🌙';
+}
+
+/* ─── SEARCH ────────────────────────────────────────────────────── */
+const searchIndex = (()=>{
+  const idx=[];
+  for(const [cat,products] of Object.entries(data))
+    for(const p of products) idx.push({cat,label:catLabel[cat],icon:catMeta[cat],product:p});
+  for(const [cat,lbl] of Object.entries(catLabel))
+    idx.push({cat,label:lbl,icon:catMeta[cat],product:null});
+  return idx;
+})();
+
+function onSearch(q){
+  const el=document.getElementById('search-results');
+  q=q.trim().toLowerCase();
+  if(!q){ el.classList.remove('open'); return; }
+  const hits=searchIndex.filter(m=>
+    (m.product ? m.product.name.toLowerCase().includes(q) : true) ||
+    m.label.toLowerCase().includes(q)
+  ).slice(0,8);
+  if(!hits.length){ el.innerHTML='<div class="sr-empty">No results for "'+q+'"</div>'; el.classList.add('open'); return; }
+  el.innerHTML=hits.map(m=>m.product
+    ? `<div class="sr-item" onmousedown="show('${m.cat}','${m.icon}','${m.label}')">
+         <span>${m.icon}</span><span style="flex:1">${m.product.name}</span>
+         <span class="sr-price">${m.product.price}</span>
+         <span class="sr-cat">${m.label}</span>
+       </div>`
+    : `<div class="sr-item" onmousedown="show('${m.cat}','${m.icon}','${m.label}')">
+         <span>${m.icon}</span><span style="flex:1;font-weight:600">${m.label}</span>
+         <span class="sr-cat">Category</span>
+       </div>`
+  ).join('');
+  el.classList.add('open');
+}
+function closeSearchDelay(){ setTimeout(()=>document.getElementById('search-results').classList.remove('open'),200); }
+
+/* ─── QUICK PICK ────────────────────────────────────────────────── */
+function quickPick(){
+  const cats=Object.keys(data);
+  const cat=cats[Math.floor(Math.random()*cats.length)];
+  const p=data[cat][Math.floor(Math.random()*data[cat].length)];
+  document.getElementById('qp-name').textContent=p.name;
+  document.getElementById('qp-stars').textContent='★'.repeat(Math.floor(p.rating))+'☆'.repeat(5-Math.floor(p.rating));
+  document.getElementById('qp-rating').textContent=`${p.rating} · ${p.reviews} reviews`;
+  document.getElementById('qp-price').textContent=p.price;
+  document.getElementById('qp-cat').textContent=`${catMeta[cat]} ${catLabel[cat]} · ${p.tag}`;
+  document.getElementById('qp-cta').onclick=()=>window.open(p.id.startsWith('http') ? p.id : 'https://www.amazon.com/dp/'+p.id,'_blank');
+  document.getElementById('qp-overlay').classList.add('open');
+}
+function closeQP(){ document.getElementById('qp-overlay').classList.remove('open'); }
+document.getElementById('qp-overlay').addEventListener('click',e=>{ if(e.target===e.currentTarget) closeQP(); });
+
+/* ─── NAV ───────────────────────────────────────────────────────── */
+function stars(r){ return '★'.repeat(Math.floor(r))+'☆'.repeat(5-Math.floor(r)); }
+
+function show(id,icon,label){
+  document.getElementById('search-input').value='';
+  document.getElementById('search-results').classList.remove('open');
+  const home=document.getElementById('screen-home');
+  const prod=document.getElementById('screen-products');
+  home.classList.add('slide-out');
+  setTimeout(()=>{
+    home.classList.remove('active','slide-out');
+    prod.classList.add('active','slide-in');
+    setTimeout(()=>prod.classList.remove('slide-in'),400);
+  },200);
+  document.getElementById('cat-title').innerHTML=`<span>${icon}</span> ${label}`;
+  document.getElementById('product-grid').innerHTML=data[id].map(p=>{
+    const url = p.id.startsWith('http') ? p.id : 'https://www.amazon.com/dp/'+p.id;
+    return `
+    <div class="card" style="--rc:${p.rc}" onclick="window.open('${url}','_blank')">
+      <div class="rank-bg">${p.rank}</div>
+      ${p.img ? `<img class="card-img" src="${p.img}" alt="${p.name}" onerror="this.style.display='none'">` : ''}
+      <div class="tag">✓ ${p.tag}</div>
+      <div class="product-name">${p.name}</div>
+      <div class="meta"><span class="stars">${stars(p.rating)}</span><span class="meta-text">${p.rating} · ${p.reviews} reviews</span></div>
+      <div class="price">${p.price}</div>
+      <button class="cta">SHOP NOW →</button>
+    </div>`;
+  }).join('');
+}
+
+function goHome(){
+  const home=document.getElementById('screen-home');
+  const prod=document.getElementById('screen-products');
+  if(!prod.classList.contains('active')) return;
+  prod.classList.add('slide-out');
+  setTimeout(()=>{
+    prod.classList.remove('active','slide-out');
+    home.classList.add('active','slide-back-in');
+    setTimeout(()=>home.classList.remove('slide-back-in'),400);
+  },200);
+}
+
+/* ─── TICKER ────────────────────────────────────────────────────── */
+(function(){
+  const all = [
+    {icon:'⚡', cat:'Electronics',  count:2341},
+    {icon:'✨', cat:'Beauty',        count:1876},
+    {icon:'🍳', cat:'Kitchen',       count:1203},
+    {icon:'💪', cat:'Fitness',       count:984 },
+    {icon:'🎮', cat:'Gaming',        count:872 },
+    {icon:'🏡', cat:'Home & Garden', count:761 },
+    {icon:'💻', cat:'Computers',     count:693 },
+    {icon:'❤️', cat:'Health',        count:654 },
+    {icon:'🧸', cat:'Toys & Games',  count:589 },
+    {icon:'👗', cat:'Fashion',       count:512 },
+    {icon:'🐾', cat:'Pet Supplies',  count:478 },
+    {icon:'🔧', cat:'Tools',         count:431 },
+  ];
+
+  const list = document.getElementById('ticker-list');
+  list.style.cssText = 'display:flex;flex-direction:column;gap:8px;';
+
+  function pick3(){
+    const shuffled = [...all].sort(()=>Math.random()-0.5);
+    return shuffled.slice(0,3).map(e=>({
+      ...e,
+      count: e.count + Math.floor(Math.random()*60) - 20
+    }));
+  }
+
+  function render(items){
+    list.innerHTML = items.map(e=>`
+      <div class="ticker-item">
+        <span class="ticker-icon">${e.icon}</span>
+        <div class="ticker-text">
+          <div class="ticker-cat">${e.cat}</div>
+          <div class="ticker-sub">shoppers today</div>
         </div>
+        <div class="ticker-count">${Math.max(100,e.count).toLocaleString()}</div>
       </div>
+    `).join('');
+  }
 
-      <div>
-        <div class="contact-form" id="contactForm">
-          <div class="form-row">
-            <div class="form-group">
-              <label class="form-label" for="fname">Name</label>
-              <input class="form-input" type="text" id="fname" placeholder="Your name" />
-            </div>
-            <div class="form-group">
-              <label class="form-label" for="fcompany">Company</label>
-              <input class="form-input" type="text" id="fcompany" placeholder="Optional" />
-            </div>
-          </div>
-          <div class="form-group">
-            <label class="form-label" for="fsubject">Topic</label>
-            <select class="contact-select" id="fsubject">
-              <option value="">Select a topic</option>
-              <option value="trading">Trading enquiry</option>
-              <option value="it">CEE market entry / IT consultancy</option>
-              <option value="other">Something else</option>
-            </select>
-          </div>
-          <div class="form-group">
-            <label class="form-label" for="fmessage">Message</label>
-            <textarea class="form-textarea" id="fmessage" placeholder="What are you working on?"></textarea>
-          </div>
-          <button class="btn-submit" onclick="handleSubmit()">Send message</button>
-          <div class="form-success" id="formSuccess">
-            Thanks — we'll get back to you at <strong id="replyEmail"></strong>.
-            You can also reach us directly at <strong>office@garaytech.com</strong>.
-          </div>
-        </div>
-      </div>
+  render(pick3());
 
-    </div>
-  </section>
+  // Rotate to a new random 3 every 5 seconds
+  setInterval(()=>{
+    list.style.opacity = '0';
+    setTimeout(()=>{
+      render(pick3());
+      list.style.opacity = '1';
+    }, 350);
+  }, 5000);
 
-  <!-- FOOTER -->
-  <footer>
-    <span class="footer-copy">&copy; 2025 GarayTech s.r.o. &mdash; All rights reserved</span>
-    <span class="footer-reg">Registered in the Czech Republic</span>
-  </footer>
-
-  <script>
-    function handleSubmit() {
-      const name = document.getElementById('fname').value.trim();
-      const topic = document.getElementById('fsubject').value;
-      const message = document.getElementById('fmessage').value.trim();
-
-      if (!name || !topic || !message) {
-        alert('Please fill in your name, a topic, and a message.');
-        return;
-      }
-
-      const email = topic === 'trading' ? 'gabriel@bulkvanilla.eu' : 'office@garaytech.com';
-      document.getElementById('replyEmail').textContent = email;
-
-      const form = document.getElementById('contactForm');
-      const success = document.getElementById('formSuccess');
-
-      Array.from(form.children).forEach(el => {
-        if (el !== success) el.style.display = 'none';
-      });
-      success.style.display = 'block';
-
-      const subject = encodeURIComponent('GarayTech enquiry — ' + topic);
-      const body = encodeURIComponent('Name: ' + name + '\n\n' + message);
-      window.location.href = 'mailto:' + email + '?subject=' + subject + '&body=' + body;
-    }
-  </script>
-
+  list.style.transition = 'opacity 0.35s ease';
+})();
+</script>
 </body>
 </html>
